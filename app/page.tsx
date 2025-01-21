@@ -6,11 +6,13 @@ import gsap from "gsap";
 const YES_IMAGES = [
   "/img/yes/tomHeart.avif",
   "/img/yes/quackLolaSmall.jpg",
+  "/img/yes/bugsLola.jpg",
 ];
 
 const NO_IMAGES = [
   "/img/no/sadPatrick.avif",
   "/img/no/angryFerg.avif",
+  "/img/no/bearCry.avif"
 ];
 
 const YES_RESPONSE = [
