@@ -19,11 +19,11 @@ var _s = __turbopack_refresh__.signature();
 ;
 ;
 const YES_IMAGES = [
-    "/img/yes/tomHeart.gif"
+    "/img/yes/tomHeart.avif"
 ];
 const NO_IMAGES = [
-    "/img/no/sadPatrick.gif",
-    "/img/no/angryFerg.gif"
+    "/img/no/sadPatrick.avif",
+    "/img/no/angryFerg.avif"
 ];
 const YES_RESPONSE = [
     "HIP HIP HOORAY! Happy Valentines! ❤️",
@@ -161,7 +161,7 @@ function Home() {
                         className: "flex flex-col items-center min-h-screen justify-center",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                src: "/img/cuteLook.jpeg",
+                                src: "/img/cuteLook.webp",
                                 alt: "cute look",
                                 width: 200,
                                 height: 200,

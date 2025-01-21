@@ -4,12 +4,12 @@ import Image from "next/image";
 import gsap from "gsap";
 
 const YES_IMAGES = [
-  "/img/yes/tomHeart.gif",
+  "/img/yes/tomHeart.avif",
 ];
 
 const NO_IMAGES = [
-  "/img/no/sadPatrick.gif",
-  "/img/no/angryFerg.gif"
+  "/img/no/sadPatrick.avif",
+  "/img/no/angryFerg.avif"
 ];
 
 const YES_RESPONSE = [
@@ -149,7 +149,7 @@ export default function Home() {
           {response  === null ? (
             <div className="flex flex-col items-center min-h-screen justify-center">
               <Image
-                src={"/img/cuteLook.jpeg"}
+                src={"/img/cuteLook.webp"}
                 alt="cute look"
                 width={200}
                 height={200}
