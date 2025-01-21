@@ -6,11 +6,13 @@ import gsap from "gsap";
 const YES_IMAGES = [
   "/img/yes/tomHeart.avif",
   "/img/yes/quackLolaSmall.jpg",
+  "/img/yes/bugsLola.jpg",
 ];
 
 const NO_IMAGES = [
   "/img/no/sadPatrick.avif",
   "/img/no/angryFerg.avif",
+  "/img/no/bearCry.avif"
 ];
 
 const YES_RESPONSE = [
@@ -150,7 +152,7 @@ export default function Home() {
           {response  === null ? (
             <div className="flex flex-col items-center min-h-screen justify-center">
               <Image
-                src={"/img/cuteLook.jpg"}
+                src={"/img/cuteLookSmall.jpg"}
                 alt="cute look"
                 width={200}
                 height={200}
