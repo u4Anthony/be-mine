@@ -150,7 +150,7 @@ export default function Home() {
           {response  === null ? (
             <div className="flex flex-col items-center min-h-screen justify-center">
               <Image
-                src={"/img/cuteLook.jpg"}
+                src={"/img/cuteLookSmall.jpg"}
                 alt="cute look"
                 width={200}
                 height={200}
