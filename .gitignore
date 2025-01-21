@@ -3,3 +3,4 @@ public/img/img_og
 
 .next
 node_modules
+*.DS_Store
