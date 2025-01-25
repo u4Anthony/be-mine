@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import gsap from "gsap";
@@ -152,84 +152,86 @@ export default function Home() {
 
 
   return (
-    <div className="h-screen w-screen bg-gradient-to-t from-red-200 via-pink-400 to-rose-600">
-      <div id="petals" className="z-0"/>
-      <main className="relative z-[2]">
-        <div className="flex flex-row min-h-screen justify-center items-center">
-          {response  === null ? (
-            <div className="flex flex-col items-center min-h-screen justify-center">
-              <Image
-                src={"/img/cuteLookSmall.jpg"}
-                alt="cute look"
-                width={200}
-                height={200}
-                className="rounded-lg shadow-lg mb-4"
-              />
-              <div className="divide-y divide-gray-200 overflow-hidden rounded-lg backdrop-blur-sm bg-white/30 shadow">
-                <div className="px-4 py-5 sm:p-6> text-black text-center">
-                  {valentineName ? `${valentineName}, Will You Be My Valentine?` : "Will You Be My Valentine?"}
-                </div>
-                <div className="px-4 py-4 sm:px-6 space-x-4 flex justify-center">
-                  <button 
-                    className="w-24 rounded-md bg-emerald-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    onClick={() => handleResponse('yes')}
-                    >
-                    Yes
-                  </button>
-                  <button 
-                    className="w-24 rounded-md bg-red-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                    onClick={() => handleResponse('no')}
-                    >
-                    No
-                  </button>
+    <Suspense fallback={<div>Loading...</div>}>
+      <div className="h-screen w-screen bg-gradient-to-t from-red-200 via-pink-400 to-rose-600">
+        <div id="petals" className="z-0"/>
+        <main className="relative z-[2]">
+          <div className="flex flex-row min-h-screen justify-center items-center">
+            {response  === null ? (
+              <div className="flex flex-col items-center min-h-screen justify-center">
+                <Image
+                  src={"/img/cuteLookSmall.jpg"}
+                  alt="cute look"
+                  width={200}
+                  height={200}
+                  className="rounded-lg shadow-lg mb-4"
+                />
+                <div className="divide-y divide-gray-200 overflow-hidden rounded-lg backdrop-blur-sm bg-white/30 shadow">
+                  <div className="px-4 py-5 sm:p-6> text-black text-center">
+                    {valentineName ? `${valentineName}, Will You Be My Valentine?` : "Will You Be My Valentine?"}
+                  </div>
+                  <div className="px-4 py-4 sm:px-6 space-x-4 flex justify-center">
+                    <button 
+                      className="w-24 rounded-md bg-emerald-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      onClick={() => handleResponse('yes')}
+                      >
+                      Yes
+                    </button>
+                    <button 
+                      className="w-24 rounded-md bg-red-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      onClick={() => handleResponse('no')}
+                      >
+                      No
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ) : (
-            <div className="text-center">
-              {response === 'yes' ? (
-                <div className="flex flex-col items-center">
-                  <Image
-                    src={getRandomImage(YES_IMAGES)}
-                    alt="Happy Valentines"
-                    width={400}
-                    height={400}
-                    className="rounded-lg shadow-lg mb-4"
-                  />
-                  <p className="text-black text-xl font-bold">
-                    {getRandomText(YES_RESPONSE)}
-                  </p>
-                  <button 
-                  className="w-24 rounded-md bg-red-600 px-2.5 py-1.5 mt-4 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  onClick={() => handleResponse(null)}
-                  >
-                  Change of Heart? 😢
-                </button>
-                </div>
-              ) : (
-                <div className="flex flex-col items-center">
-                  <Image
-                    src={getRandomImage(NO_IMAGES)}
-                    alt="Sad Valentines"
-                    width={400}
-                    height={400}
-                    className="rounded-lg shadow-lg mb-4"
-                  />
-                  <p className="text-black text-xl font-bold">
-                    {getRandomText(NO_RESPONSE)}
-                  </p>
-                  <button 
-                  className="w-24 rounded-md bg-emerald-600 px-2.5 py-1.5 mt-4 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  onClick={() => handleResponse(null)}
-                  >
-                    Change of Heart? 😀
+            ) : (
+              <div className="text-center">
+                {response === 'yes' ? (
+                  <div className="flex flex-col items-center">
+                    <Image
+                      src={getRandomImage(YES_IMAGES)}
+                      alt="Happy Valentines"
+                      width={400}
+                      height={400}
+                      className="rounded-lg shadow-lg mb-4"
+                    />
+                    <p className="text-black text-xl font-bold">
+                      {getRandomText(YES_RESPONSE)}
+                    </p>
+                    <button 
+                    className="w-24 rounded-md bg-red-600 px-2.5 py-1.5 mt-4 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    onClick={() => handleResponse(null)}
+                    >
+                    Change of Heart? 😢
                   </button>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      </main>
-    </div>
+                  </div>
+                ) : (
+                  <div className="flex flex-col items-center">
+                    <Image
+                      src={getRandomImage(NO_IMAGES)}
+                      alt="Sad Valentines"
+                      width={400}
+                      height={400}
+                      className="rounded-lg shadow-lg mb-4"
+                    />
+                    <p className="text-black text-xl font-bold">
+                      {getRandomText(NO_RESPONSE)}
+                    </p>
+                    <button 
+                    className="w-24 rounded-md bg-emerald-600 px-2.5 py-1.5 mt-4 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    onClick={() => handleResponse(null)}
+                    >
+                      Change of Heart? 😀
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </main>
+      </div>
+    </Suspense>
   );
 }
