@@ -13,6 +13,38 @@ export default function CreateValentinePage() {
     const[generatedLink, setGeneratedLink] = useState("");
     const[showCopyToast, setShowCopyToast] = useState(false);
 
+    const random = (min: number, max: number) => min + Math.random() * (max - min);
+    
+    const animatePetal = (elm: HTMLElement) => {
+        gsap.to(elm, {
+          y: window.innerHeight + 100,
+          duration: random(6, 15),
+          ease: "none",
+          repeat: -1,
+          delay: -15
+        });
+    
+        gsap.to(elm, {
+          x: '+=100',
+          rotation: random(0, 180),
+          duration: random(4, 8),
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut"
+        });
+    
+        gsap.to(elm, {
+          rotateX: random(0, 360),
+          rotateY: random(0, 360),
+          duration: random(2, 8),
+          repeat: -1, 
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: -5
+        });
+    
+      }
+
     useEffect(() => {
         /*
         Original Petal animation by DIACO : twitter.com/Diaco_ml  ||  codepen.io/MAW
@@ -39,39 +71,7 @@ export default function CreateValentinePage() {
             animatePetal(Div);
         }
         }
-    }, []);
-
-    const random = (min: number, max: number) => min + Math.random() * (max - min);
-
-    const animatePetal = (elm: HTMLElement) => {
-      gsap.to(elm, {
-        y: window.innerHeight + 100,
-        duration: random(6, 15),
-        ease: "none",
-        repeat: -1,
-        delay: -15
-      });
-  
-      gsap.to(elm, {
-        x: '+=100',
-        rotation: random(0, 180),
-        duration: random(4, 8),
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut"
-      });
-  
-      gsap.to(elm, {
-        rotateX: random(0, 360),
-        rotateY: random(0, 360),
-        duration: random(2, 8),
-        repeat: -1, 
-        yoyo: true,
-        ease: "sine.inOut",
-        delay: -5
-      });
-  
-    }
+    }, [animatePetal]);
 
     const handleGeneratedLink = () => {
         if (name && valentineName && email) {
@@ -92,7 +92,7 @@ export default function CreateValentinePage() {
             <div id="petals" className="z-0"/>
             <main className="relative z-[2]">
                 <div className="bg-white/30 backdrop-blur-sm rounded-lg p8 shadow-lg max-w-md w-full px-6 py-2">
-                    <h1 className="text-2xl font-bold mb-2 text-center">Create Your Valentine's Link</h1>
+                    <h1 className="text-2xl font-bold mb-2 text-center">Create Your Valentine&apos;s Link</h1>
                     <div className="space-y-4">
                         <input 
                             type="text"
@@ -151,7 +151,7 @@ export default function CreateValentinePage() {
                                 href="/valentine"
                                 className="text-rose-700:underline rounded-md bg-emerald-600 px-2.5 py-1.5 mt-4 text-sm font-semibold text-white  hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
-                                Skip and Use Generic Valentine's Page
+                                Skip and Use Generic Valentine&apos;s Page
                             </Link>
                         </div>
                     </div>
