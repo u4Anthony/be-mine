@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import gsap from "gsap";
@@ -78,7 +78,7 @@ export default function Home() {
 
   const random = (min: number, max: number) => min + Math.random() * (max - min);
 
-  const animatePetal = (elm: HTMLElement) => {
+  const animatePetal = useCallback((elm: HTMLElement) => {
     gsap.to(elm, {
       y: window.innerHeight + 100,
       duration: random(6, 15),
@@ -106,7 +106,7 @@ export default function Home() {
       delay: -5
     });
 
-  }
+  }, []);
 
   useEffect(() => {
       /*
