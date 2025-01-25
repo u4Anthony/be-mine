@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { genLink } from "../utils/linkgen";
 import gsap from "gsap";
@@ -15,7 +15,7 @@ export default function CreateValentinePage() {
 
     const random = (min: number, max: number) => min + Math.random() * (max - min);
     
-    const animatePetal = (elm: HTMLElement) => {
+    const animatePetal = useCallback((elm: HTMLElement) => {
         gsap.to(elm, {
           y: window.innerHeight + 100,
           duration: random(6, 15),
@@ -43,7 +43,7 @@ export default function CreateValentinePage() {
           delay: -5
         });
     
-      }
+      }, []);
 
     useEffect(() => {
         /*

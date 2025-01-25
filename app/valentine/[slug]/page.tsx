@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import gsap from "gsap";
@@ -78,7 +78,7 @@ export default function Home() {
 
   const random = (min: number, max: number) => min + Math.random() * (max - min);
 
-  const animatePetal = (elm: HTMLElement) => {
+  const animatePetal = useCallback((elm: HTMLElement) => {
     gsap.to(elm, {
       y: window.innerHeight + 100,
       duration: random(6, 15),
@@ -106,36 +106,8 @@ export default function Home() {
       delay: -5
     });
 
-  }
+  }, []);
 
-  useEffect(() => {
-      /*
-        Original Petal animation by DIACO : twitter.com/Diaco_ml  ||  codepen.io/MAW
-        powered by GSAP : https://www.greensock.com/
-      */
-
-      // Init GSAP animation
-      const total = 30;
-      const petalsContainer = document.getElementById("petals");
-
-      if (petalsContainer) {
-        gsap.set(petalsContainer, { perspective: 600 });
-
-        // Create petals
-        for (let i=0; i<total; i++) {
-          const Div = document.createElement('div');
-          Div.className = 'dot';
-          gsap.set(Div, {
-            x: random(0, window.innerWidth),
-            y: random(-200, -150),
-            z: random(-200, 200)
-          });
-          petalsContainer.appendChild(Div);
-          animatePetal(Div);
-        }
-      }
-  }, [animatePetal]);
-  
   useEffect(() => {
       /*
         Original Petal animation by DIACO : twitter.com/Diaco_ml  ||  codepen.io/MAW
